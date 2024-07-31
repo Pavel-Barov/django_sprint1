@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+{{ post.location|title }}. {{ post.date|title }}
+{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <article>
+      <ul>
+        <li>
+          Место: {{ post.location|title }}              
+        </li>
+        <li>
+          Дата: {{ post.date|title }}
+        </li>
+        <li>
+          Категория: <a href="not-my-day">{{ post.category|title }}</a>
+        </li>
+      </ul>         
+      <p>
+        {{ post.text|linebreaks }}
+      </p>          
+    </article>                
+  </div>     
+{% endblock %}
