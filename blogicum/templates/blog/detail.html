@@ -14,7 +14,7 @@
           Дата: {{ post.date|title }}
         </li>
         <li>
-          Категория: <a href="not-my-day">{{ post.category|title }}</a>
+          Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category|title }}</a>
         </li>
       </ul>         
       <p>

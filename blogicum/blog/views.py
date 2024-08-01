@@ -1,5 +1,6 @@
 
 from django.shortcuts import render
+from django.http import HttpResponse
 
 posts = [
     {
@@ -53,8 +54,11 @@ def index(request):
 
 def post_detail(request, pk):
     template = 'blog/detail.html'
-    context = {'post': posts[pk]}
-    return render(request, template, context)
+    if pk < len(posts):
+        context = {'post': posts[pk]}
+        return render(request, template, context)
+    else:
+        return HttpResponse('404 файл не найден')
 
 
 def category_posts(request, category_slug):
