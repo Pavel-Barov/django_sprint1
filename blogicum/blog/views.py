@@ -1,6 +1,6 @@
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import Http404
 
 posts = [
     {
@@ -54,11 +54,11 @@ def index(request):
 
 def post_detail(request, pk):
     template = 'blog/detail.html'
-    if pk < len(posts):
+    try:
         context = {'post': posts[pk]}
         return render(request, template, context)
-    else:
-        return HttpResponse('404 файл не найден')
+    except IndexError:
+        raise Http404
 
 
 def category_posts(request, category_slug):
